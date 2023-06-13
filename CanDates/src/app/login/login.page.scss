@@ -1,0 +1,38 @@
+ion-card {
+    margin-bottom: 20px;
+  }
+  
+  .register-option {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .social-login {
+    margin-top: 20px;
+    text-align: center;
+  
+    ion-label {
+      margin-bottom: 10px;
+    }
+  
+    ion-button {
+      --ion-background-color: #dd4b39;
+    }
+  }
+  .login-card {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .login-button {
+    margin-top: 20px;
+  }
+  
+  .small-button {
+    font-size: 12px;
+    padding: 5px;
+  }
+  .invalid {
+    --ion-color: red;
+  }
+  
