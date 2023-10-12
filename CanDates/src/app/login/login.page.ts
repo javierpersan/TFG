@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage implements OnInit, AfterViewInit {
   email: string;
   password: string;
   emailValidationColor: string = 'primary';
@@ -15,11 +16,32 @@ export class LoginPage implements OnInit {
     this.password = '';
   }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterViewInit() {
+    gsap.timeline()
+      .to('.title', {
+        duration: 2,
+        fontSize: '4em',
+        top: '10%',
+        left: '50%',
+        ease: 'power2.out',
+      })
+      .to('.animation-container', {
+        duration: 1,
+        height: '100px',
+        backgroundColor: 'transparent',
+        ease: 'power2.inOut',
+      }, "-=1")
+      .to('.login-container', {
+        duration: 1,
+        opacity: 1,
+        ease: 'power2.out',
+      });
   }
 
   validateEmail() {
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     this.emailValidationColor = emailPattern.test(this.email) ? 'primary' : 'danger';
   }
   

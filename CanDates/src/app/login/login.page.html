@@ -1,21 +1,13 @@
 <ion-content [fullscreen]="true">
   <ion-img src="assets/fondologin.png" class="background-image"></ion-img>
-
+  <div class="animation-container">
+    <h1 class="title">Candidates</h1>
+  </div>
   <div class="login-container ion-text-center">
-   
-      
     
-      
-    <h1 class="title">Candidates</h1> <!-- Título con la fuente vistosa -->
-        
-         
-     
-     
-   
-    
+  
+
     <ion-card class="login-card">
-      <!-- Contenido del formulario de inicio de sesión -->
-      
       <ion-card-header>
         <ion-card-title>Iniciar sesión</ion-card-title>
       </ion-card-header>
@@ -38,7 +30,6 @@
     </ion-card>
 
     <ion-card class="register-card">
-      <!-- Contenido del botón de registro -->
       <ion-card-content>
         <ion-label class="register-label">No tienes una cuenta aún?</ion-label>
         <ion-button expand="full" color="secondary" routerLink="/register" class="small-button">
@@ -48,7 +39,6 @@
     </ion-card>
 
     <ion-card class="social-login-card">
-      <!-- Contenido del botón de inicio de sesión con Google -->
       <ion-card-content>
         <ion-label class="social-login-label">O inicia sesión con:</ion-label>
         <ion-button expand="full" color="danger" (click)="loginWithGoogle()" class="small-button">
