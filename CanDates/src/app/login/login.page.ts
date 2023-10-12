@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { gsap } from 'gsap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginPage implements OnInit, AfterViewInit {
   password: string;
   emailValidationColor: string = 'primary';
 
-  constructor() {
+  constructor(private router: Router) {
     this.email = '';
     this.password = '';
   }
@@ -58,5 +59,8 @@ export class LoginPage implements OnInit, AfterViewInit {
   register() {
     console.log("Registrar usuario");
     // Implementar lógica de registro
+    this.router.navigate(['/register']);
+
+    
   }
 }

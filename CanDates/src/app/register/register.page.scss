@@ -1,0 +1,107 @@
+ion-card {
+    margin-bottom: 20px;
+    width: 80%; 
+  }
+  ion-content{
+    
+  }
+  
+  .register-option {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .social-login {
+    margin-top: 20px;
+    text-align: center;
+  
+    ion-label {
+        margin-bottom: 10px;
+    }
+  
+    ion-button {
+        --ion-background-color: #dd4b39;
+    }
+  }
+  
+  .login-card {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .login-button {
+    margin-top: 20px;
+  }
+  
+  .small-button {
+    font-size: 12px;
+    padding: 5px;
+  }
+  
+  .invalid {
+    --ion-color: red;
+  }
+  
+  ion-content {
+    --background: transparent;
+  }
+  
+  .background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.5;
+    object-fit: cover;
+  }
+  
+  
+  .login-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 90%;  /* Ajustar la altura según sea necesario */
+      opacity: 0;
+      padding: 10px;  /* Añadir un pequeño padding para evitar que los elementos toquen los bordes */
+  }
+  
+  /* Ajustar los márgenes y paddings de los elementos del formulario para reducir el espacio */
+  ion-input,
+  ion-button {
+      margin: 8px 0;  /* Reducir los márgenes */
+      width: 100%;  /* Asegurarse de que los elementos utilicen todo el ancho disponible */
+  }
+  
+  ion-button {
+      font-size: 1em;  /* Ajustar el tamaño de la fuente del botón si es necesario */
+  }
+  
+  .animation-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: transparent; /* Asegurarse de que no hay color de fondo */
+  }
+  
+  .title {
+    font-size: 10em;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    opacity: 0;
+  }
+  
