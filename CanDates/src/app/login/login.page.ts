@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as lottie from 'lottie-web';
+import lottie from 'lottie-web';
 import { gsap } from 'gsap';
 
 @Component({
@@ -29,33 +29,48 @@ export class LoginPage implements OnInit, AfterViewInit {
   playLottieAnimation() {
     const lottieContainer = document.getElementById('lottie-container');
     
+    if (!lottieContainer) {
+        console.error('Lottie container not found');
+        return;
+    }
+    
     const animation = lottie.loadAnimation({
-      container: lottieContainer,
-      renderer: 'svg',
-      loop: false,
-      autoplay: true,
-      path: 'assets/splash.json'
+        container: lottieContainer,
+        renderer: 'svg',
+        loop: false, // Asegúrate de que loop está establecido en false
+        autoplay: true,
+        path: 'assets/splash.json'
     });
 
+    let repeatCount = 0; // Contador para el número de repeticiones
+    const maxRepeats = 5; // Número máximo de repeticiones deseadas
+
     animation.addEventListener('complete', () => {
-      gsap.to(lottieContainer, {
-        opacity: 0,
-        duration: 0.5,
-        onComplete: () => {
-          if (lottieContainer) {
-            lottieContainer.remove();
-          }
-          this.startPageAnimations();
-        
+        repeatCount++; // Incrementa el contador cada vez que la animación se completa
+
+        if (repeatCount < maxRepeats) {
+            // Si no hemos alcanzado el número máximo de repeticiones, reinicia la animación
+            animation.goToAndPlay(0, true);
+        } else {
+            // Si hemos alcanzado el número máximo de repeticiones, procede como desees
+            gsap.to(lottieContainer, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                    lottieContainer.remove();
+                    this.startPageAnimations();
+                }
+            });
         }
-      });
     });
-  }
+}
+
+
 
   startPageAnimations() {
     gsap.timeline()
       .to('.title', {
-        duration: 2,
+        duration: 1.5,
         fontSize: '4em',
         top: '10%',
         left: '50%',
