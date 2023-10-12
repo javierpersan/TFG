@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { gsap } from 'gsap';
 import { Router } from '@angular/router';
+import * as lottie from 'lottie-web';
+import { gsap } from 'gsap';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,41 @@ export class LoginPage implements OnInit, AfterViewInit {
     this.password = '';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.playLottieAnimation();
+  }
 
   ngAfterViewInit() {
+    // Las animaciones relacionadas con la página de inicio de sesión se manejarán después de que la animación Lottie haya terminado.
+  }
+
+  playLottieAnimation() {
+    const lottieContainer = document.getElementById('lottie-container');
+    
+    const animation = lottie.loadAnimation({
+      container: lottieContainer,
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      path: 'assets/splash.json'
+    });
+
+    animation.addEventListener('complete', () => {
+      gsap.to(lottieContainer, {
+        opacity: 0,
+        duration: 0.5,
+        onComplete: () => {
+          if (lottieContainer) {
+            lottieContainer.remove();
+          }
+          this.startPageAnimations();
+        
+        }
+      });
+    });
+  }
+
+  startPageAnimations() {
     gsap.timeline()
       .to('.title', {
         duration: 2,
@@ -60,7 +93,5 @@ export class LoginPage implements OnInit, AfterViewInit {
     console.log("Registrar usuario");
     // Implementar lógica de registro
     this.router.navigate(['/register']);
-
-    
   }
 }
