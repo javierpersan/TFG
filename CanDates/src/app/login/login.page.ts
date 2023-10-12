@@ -10,35 +10,31 @@ export class LoginPage implements OnInit {
   password: string;
   emailValidationColor: string = 'primary';
 
-
-
-
-
-
-constructor() {
-  this.email = '';
-  this.password = '';
-}
+  constructor() {
+    this.email = '';
+    this.password = '';
+  }
 
   ngOnInit() {
   }
+
   validateEmail() {
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/;
     this.emailValidationColor = emailPattern.test(this.email) ? 'primary' : 'danger';
   }
   
   login() {
     console.log("Iniciar sesión");
-    // Aquí puedes agregar la lógica real para el inicio de sesión con Firebase u otro servicio de autenticación
+    // Implementar lógica de inicio de sesión
   }
 
   loginWithGoogle() {
     console.log("Iniciar sesión con Google");
-    // Aquí puedes agregar la lógica real para el inicio de sesión con Google
+    // Implementar lógica de inicio de sesión con Google
   }
+
   register() {
-    // Agrega la lógica para redirigir a la página de registro u otras acciones relacionadas con el registro
+    console.log("Registrar usuario");
+    // Implementar lógica de registro
   }
-  
-  
 }

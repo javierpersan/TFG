@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "canidates": {
+      "hosting": {
+        "app": [
+          "canidates"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "canidates"
+  }
+}
