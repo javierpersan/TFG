@@ -3,7 +3,8 @@
     "@angular/fire": "^7.6.1",
     "@ionic-native/lottie-splash-screen": "^5.36.0",
     "@lottiefiles/lottie-player": "^2.0.2",
-    "firebase": "^9.23.0",
-    "lottie-web": "^5.12.2"
+    "firebase": "^10.5.0",
+    "lottie-web": "^5.12.2",
+    "rxfire": "^6.0.5"
   }
 }

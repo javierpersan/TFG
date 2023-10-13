@@ -1,5 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { gsap } from 'gsap';
+import { AuthServiceService } from '../services/auth-service.service'; // Asegúrate de que la ruta es correcta
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Component({
   selector: 'app-register',
@@ -7,13 +13,14 @@ import { gsap } from 'gsap';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit, AfterViewInit {
-  email: string;
-  password: string;
+  email: string = '';
+  password: string = '';
+  errorMessage: string = ''; 
+  
+  successMessage: string = '';
 
-  constructor() {
-    this.email = '';
-    this.password = '';
-  }
+
+  constructor(private authService: AuthServiceService, private router: Router,    private afAuth: AngularFireAuth,) {}
 
   ngOnInit() {}
 
@@ -39,8 +46,22 @@ export class RegisterPage implements OnInit, AfterViewInit {
       });
   }
 
-  register() {
-    console.log("Registrar usuario");
-    // Implementar lógica de registro
+  // Método para registrar un usuario con correo electrónico y contraseña
+  async register() {
+    try {
+      const userCredential = await this.afAuth.createUserWithEmailAndPassword(
+        this.email,
+        this.password
+      );
+      this.successMessage = 'Usuario registrado con éxito!';
+      this.errorMessage = '';
+    } catch (error) {
+      console.error('Error:', error);
+      this.errorMessage = 'Ocurrió un error al intentar registrar el usuario. tu correo no existe o ya hay un usuario con ese correo ';
+
+
+      
   }
+}
+
 }

@@ -11,16 +11,21 @@
       <ion-card-content>
         <ion-item>
           <ion-label position="floating">Correo electrónico</ion-label>
-          <ion-input type="email" [(ngModel)]="email"></ion-input>
+          <ion-input type="email" [(ngModel)]="email" placeholder="Email" required></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" [(ngModel)]="password"></ion-input>
+          <ion-input type="password" [(ngModel)]="password" placeholder="Password" required></ion-input>
         </ion-item>
         <ion-button expand="full" color="primary" (click)="register()" class="login-button">
           Registrarse
         </ion-button>
-      </ion-card-content>
-    </ion-card>
-  </div>
+        <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+        <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+
+  </ion-card-content>
+</ion-card>
+</div>
 </ion-content>
+
