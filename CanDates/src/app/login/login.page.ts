@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import lottie from 'lottie-web';
 import { gsap } from 'gsap';
+import { AuthServiceService } from '../services/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit, AfterViewInit {
   password: string;
   emailValidationColor: string = 'primary';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthServiceService) {
     this.email = '';
     this.password = '';
   }
@@ -99,10 +100,18 @@ export class LoginPage implements OnInit, AfterViewInit {
     // Implementar lógica de inicio de sesión
   }
 
-  loginWithGoogle() {
-    console.log("Iniciar sesión con Google");
-    // Implementar lógica de inicio de sesión con Google
+  async loginWithGoogle() {
+    try {
+      await this.authService.loginWithGoogle();
+      console.log('Usuario autenticado con Google!');
+      // Aquí puedes agregar cualquier lógica adicional después de que el usuario inicie sesión.
+      // Por ejemplo, redirigir a otra página.
+    } catch (error) {
+      console.error('Error al autenticar con Google:', error);
+      // Aquí puedes manejar el error, por ejemplo, mostrar un mensaje al usuario.
+    }
   }
+  
 
   register() {
     console.log("Registrar usuario");
