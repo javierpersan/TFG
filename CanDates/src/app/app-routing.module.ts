@@ -31,7 +31,12 @@ const routes: Routes = [
   {
     path: 'tab3',
     loadChildren: () => import('./pages/tabs/tab3/tab3.module').then( m => m.Tab3PageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs.module').then( m => m.TabsPageModule)
   }
+
 
 ];
 

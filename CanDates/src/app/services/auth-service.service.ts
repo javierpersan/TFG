@@ -38,7 +38,7 @@ export class AuthServiceService {
     // Si la autenticación fue exitosa, obtenemos el correo electrónico y lo almacenamos en el servicio
     if (userCredential && userCredential.user && userCredential.user.email) {
       this.setUserEmail(userCredential.user.email);
-      this.router.navigate(['tab2']);  // Redireccionamos al usuario a la página 'home'
+      this.router.navigate(['tabs']);  // Redireccionamos al usuario a la página 'home'
     } else {
       console.error('No se pudo obtener el correo electrónico del usuario.');
     }
