@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+    <!-- Avatar y correo del usuario -->
+    <div style="text-align: center; padding-top: 20px;">
+      <ion-avatar style="width: 100px; height: 100px; margin: 0 auto;">
+        <img src="ruta-de-tu-imagen.jpg">
+      </ion-avatar>
+      <p style="color: gray; margin-top: 10px;">correo@ejemplo.com</p>
+    </div>
+  
+    <!-- Caja de texto para modificar apodo -->
+    <div style="padding: 20px;">
+      <ion-item>
+        <ion-label position="floating">Modificar Apodo</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+    </div>
+  
+    <!-- Descripción -->
+    <div style="padding: 20px;">
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-textarea rows="4"></ion-textarea>
+      </ion-item>
+    </div>
+  
+    <!-- Fotos -->
+    <div style="padding: 20px;">
+      <ion-label>Fotos</ion-label>
+  
+      <!-- Fotos de la persona -->
+      <ion-label style="font-weight: bold;">Persona</ion-label>
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
+          <ion-img src="ruta-de-tu-imagen-1.jpg" style="width: 100%; height: 100%;"></ion-img>
+        </div>
+        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
+          <ion-img src="ruta-de-tu-imagen-2.jpg" style="width: 100%; height: 100%;"></ion-img>
+        </div>
+        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
+          <ion-img src="ruta-de-tu-imagen-3.jpg" style="width: 100%; height: 100%;"></ion-img>
+        </div>
+      </div>
+  
+      <!-- Botón para añadir más fotos de la persona -->
+      <ion-button expand="block" fill="outline" style="margin-top: 10px;">Añadir más</ion-button>
+  
+      <!-- Fotos de la mascota -->
+      <ion-label style="font-weight: bold; margin-top: 20px;">Mascota</ion-label>
+      <div style="display: flex; justify-content: space-between;">
+        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
+          <ion-img src="ruta-de-tu-imagen-mascota-1.jpg" style="width: 100%; height: 100%;"></ion-img>
+        </div>
+        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
+          <ion-img src="ruta-de-tu-imagen-mascota-2.jpg" style="width: 100%; height: 100%;"></ion-img>
+        </div>
+        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
+          <ion-img src="ruta-de-tu-imagen-mascota-3.jpg" style="width: 100%; height: 100%;"></ion-img>
+        </div>
+      </div>
+  
+      <!-- Botón para añadir más fotos de la mascota -->
+      <ion-button expand="block" fill="outline" style="margin-top: 10px;">Añadir más</ion-button>
+    </div>
+
+  
+
+  
+  
+  
+</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/user-tab']">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>User</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/pet-tab']">
+      <ion-icon name="paw"></ion-icon>
+      <ion-label>Pet</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/chat-tab']">
+      <ion-icon name="chatbubbles"></ion-icon>
+      <ion-label>Chat</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

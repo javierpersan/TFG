@@ -13,8 +13,21 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [routerLink]="['/user-tab']">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>User</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/pet-tab']">
+        <ion-icon name="paw"></ion-icon>
+        <ion-label>Pet</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/chat-tab']">
+        <ion-icon name="chatbubbles"></ion-icon>
+        <ion-label>Chat</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+  
 </ion-content>

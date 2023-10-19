@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,8 +25,21 @@ export class AuthServiceService {
     let userCredential
   
     if (this.platform.is('capacitor')) {
-      // Autenticación para Android
-      // (usa el método que describimos anteriormente para Android)
+      // Autenticación para Android usando Capacitor
+      try {
+        const result = await FirebaseAuthentication.signInWithGoogle() as any;
+          if (result && result.email) {
+              this.setUserEmail(result.email);  // Almacenar el correo electrónico
+              console.log('User logged in with Google on Android!');
+              this.router.navigate(['home']);  // Redireccionar al usuario a la página 'home'
+              return;
+          } else {
+              console.error('No se pudo obtener el correo electrónico del usuario en Android.');
+          }
+      } catch (error) {
+          console.error('Error logging in with Google on Android:', error);
+          return;
+      }
     } else {
       try {
         userCredential = await signInWithPopup(this.auth, new GoogleAuthProvider());
@@ -38,7 +53,7 @@ export class AuthServiceService {
     // Si la autenticación fue exitosa, obtenemos el correo electrónico y lo almacenamos en el servicio
     if (userCredential && userCredential.user && userCredential.user.email) {
       this.setUserEmail(userCredential.user.email);
-      this.router.navigate(['tabs']);  // Redireccionamos al usuario a la página 'home'
+      this.router.navigate(['home']);  // Redireccionamos al usuario a la página 'home'
     } else {
       console.error('No se pudo obtener el correo electrónico del usuario.');
     }

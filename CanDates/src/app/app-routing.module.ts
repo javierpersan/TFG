@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
+
 const routes: Routes = [
-  
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
@@ -12,31 +12,29 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
-    path: 'register',  // Añadiendo la ruta para 'register'
+    path: 'register',
     loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule)
   },
+
   {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
   },
   {
-    path: 'tab1',
-    loadChildren: () => import('./pages/tabs/tab1/tab1.module').then( m => m.Tab1PageModule)
+    path: 'user-tab',
+    loadChildren: () => import('./pages/user-tab/user-tab.module').then( m => m.UserTabPageModule)
   },
   {
-    path: 'tab2',
-    loadChildren: () => import('./pages/tabs/tab2/tab2.module').then( m => m.Tab2PageModule)
+    path: 'pet-tab',
+    loadChildren: () => import('./pages/pet-tab/pet-tab.module').then( m => m.PetTabPageModule)
   },
   {
-    path: 'tab3',
-    loadChildren: () => import('./pages/tabs/tab3/tab3.module').then( m => m.Tab3PageModule)
+    path: 'chat-tab',
+    loadChildren: () => import('./pages/chat-tab/chat-tab.module').then( m => m.ChatTabPageModule)
   },
-  {
-    path: 'tabs',
-    loadChildren: () => import('./pages/tabs.module').then( m => m.TabsPageModule)
-  }
 
+  
 
 ];
 

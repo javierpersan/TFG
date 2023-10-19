@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "864453769156",
+    "firebase_url": "https://canidates-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "canidates",
+    "storage_bucket": "canidates.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864453769156:android:1f4445db48ee0a175e9691",
+        "android_client_info": {
+          "package_name": "com.auth.CaniDates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864453769156-athcta2ig5l6cf1hgjdggcnucch0vnrp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzQmMDxdS-fcLoWzvpB0An7g-e2Bn6r6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864453769156-athcta2ig5l6cf1hgjdggcnucch0vnrp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
