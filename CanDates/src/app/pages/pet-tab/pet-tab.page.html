@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>PetMach</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">PetTab</ion-title>
+    </ion-toolbar>
+  </ion-header>
+ 
+</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button [routerLink]="['/user-tab']">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>User</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/pet-tab']">
+      <ion-icon name="paw"></ion-icon>
+      <ion-label>Pet</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/chat-tab']">
+      <ion-icon name="chatbubbles"></ion-icon>
+      <ion-label>Chat</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
