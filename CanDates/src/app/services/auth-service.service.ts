@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
-import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 
 @Injectable({
   providedIn: 'root'
@@ -23,22 +23,23 @@ export class AuthServiceService {
 
   async loginWithGoogle(): Promise<void> {
     let userCredential
-  
     if (this.platform.is('capacitor')) {
       // Autenticación para Android usando Capacitor
       try {
-        const result = await FirebaseAuthentication.signInWithGoogle() as any;
-          if (result && result.email) {
-              this.setUserEmail(result.email);  // Almacenar el correo electrónico
-              console.log('User logged in with Google on Android!');
-              this.router.navigate(['home']);  // Redireccionar al usuario a la página 'home'
-              return;
-          } else {
-              console.error('No se pudo obtener el correo electrónico del usuario en Android.');
-          }
-      } catch (error) {
-          console.error('Error logging in with Google on Android:', error);
+        const result = await GoogleAuth.signIn();
+        console.log(result.email);
+        if (result && result.email) {
+          this.setUserEmail(result.email);  // Almacenar el correo electrónico
+          console.log('User logged in with Google on Android!');
+          this.router.navigate(['home']);  // Redireccionar al usuario a la página 'home'
           return;
+        } else {
+          console.error('No se pudo obtener el correo electrónico del usuario en Android.');
+        }
+      } catch (error) {
+        console.error(' in with Google on Android:', error  );
+        //this.router.navigate(['home']);  // Redireccionar al usuario a la página 'home'
+        return;
       }
     } else {
       try {

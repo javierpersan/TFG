@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.auth.canidates;
 
 import com.getcapacitor.BridgeActivity;
 

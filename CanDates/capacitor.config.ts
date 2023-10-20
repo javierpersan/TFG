@@ -1,32 +1,19 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.example.app',
-  appName: 'MiApp',
+  appId: 'com.auth.canidates',
+  appName: 'canidates',
   webDir: 'www',
-  bundledWebRuntime: false,
+  server: {
+    androidScheme: 'https'
+  },
   plugins: {
-    FirebaseAuthentication: {
-      providers: ['google.com', 'twitter.com', 'facebook.com', 'phone'],
-      languageCode: 'en',
-      nativeAuth: false,
-      webAuthFlow: 'popup',
-      forceAuthPicker: false,
-      phoneVerificationPrompt: 'auto',
-      signInOptions: {
-        google: {
-          scopes: ['profile', 'email']
-        },
-        twitter: {},
-        facebook: {
-          scopes: ['email', 'user_birthday']
-        },
-        phone: {
-          defaultCountry: 'US'
-        }
-      }
-    }
-  }
+    GoogleAuth: {
+      scopes: ['profile', 'email'],
+      serverClientId: '864453769156-eto8bm9nu6ec0an5g4bkkpt8cfquqgl2.apps.googleusercontent.com',
+      forceCodeForRefreshToken: true,
+    },
+  },
 };
 
 export default config;
