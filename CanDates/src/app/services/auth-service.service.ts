@@ -14,7 +14,7 @@ export class AuthServiceService {
 
   async registerWithEmail(email: string, password: string): Promise<void> {
     try {
-      await createUserWithEmailAndPassword(this.auth, email, password);
+        await createUserWithEmailAndPassword(this.auth, email, password);
       console.log('User registered successfully!');
     } catch (error) {
       console.error('Error registering user:', error);
