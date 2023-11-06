@@ -13,8 +13,8 @@ const firebaseConfig = {
   projectId: "canidates",
   storageBucket: "canidates.appspot.com",
   messagingSenderId: "864453769156",
-  appId: "1:864453769156:web:341b8e40ff46966a5e9691",
-  measurementId: "G-23TBHPZDJ3"
+  appId: "1:864453769156:web:169613b2f1945c4c5e9691",
+  measurementId: "G-5X7TQV5KJ9"
 };
 
 // Initialize Firebase

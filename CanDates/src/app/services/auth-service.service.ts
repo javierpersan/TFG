@@ -24,28 +24,14 @@ export class AuthServiceService {
   async loginWithGoogle(): Promise<void> {
     let userCredential
     if (this.platform.is('capacitor')) {
-      // Autenticación para Android usando Capacitor
-      try {
-        const result = await GoogleAuth.signIn();
-        console.log(result.email);
-        if (result && result.email) {
-          this.setUserEmail(result.email);  // Almacenar el correo electrónico
-          console.log('User logged in with Google on Android!');
-          this.router.navigate(['home']);  // Redireccionar al usuario a la página 'home'
-          return;
-        } else {
-          console.error('No se pudo obtener el correo electrónico del usuario en Android.');
-        }
-      } catch (error) {
-        console.error(' in with Google on Android:', error  );
-        //this.router.navigate(['home']);  // Redireccionar al usuario a la página 'home'
-        return;
-      }
+      
     } else {
       try {
         userCredential = await signInWithPopup(this.auth, new GoogleAuthProvider());
         console.log('User logged in with Google!');
+        this.router.navigate(['home']);
       } catch (error) {
+        this.router.navigate(['home']);
         console.error('Error logging in with Google:', error);
         return;
       }
