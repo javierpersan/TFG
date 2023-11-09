@@ -1,30 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>PetMach</ion-title>
+    <ion-title>PetMatch</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">PetTab</ion-title>
-    </ion-toolbar>
-  </ion-header>
- 
+  <ion-card *ngFor="let pet of pets" (click)="flipCard(pet)">
+    <ion-card-header>
+      <ion-card-title>{{ pet.name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div [class.card-front]="!pet.flipped">
+        <img [src]="pet.photos" />
+        <p>{{ pet.description }}</p>
+      </div>
+      <div [class.card-back]="pet.flipped">
+        <!-- Contenido del reverso de la tarjeta -->
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+  <!-- Botones de acción fuera del ion-card para evitar el evento click del card -->
+  <div class="action-buttons">
+    <ion-button color="danger" (click)="dislike(pet)">
+      <ion-icon name="close"></ion-icon>
+    </ion-button>
+    <ion-button color="secondary" (click)="dislike(pet)">
+      <ion-icon name="heart"></ion-icon>
+    </ion-button>
+  </div>
+  <ion-tabs style="position:fixed">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [routerLink]="['/user-tab']">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>User</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/pet-tab']">
+        <ion-icon name="paw"></ion-icon>
+        <ion-label>Pet</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/chat-tab']">
+        <ion-icon name="chatbubbles"></ion-icon>
+        <ion-label>Chat</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button [routerLink]="['/user-tab']">
-      <ion-icon name="person"></ion-icon>
-      <ion-label>User</ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/pet-tab']">
-      <ion-icon name="paw"></ion-icon>
-      <ion-label>Pet</ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/chat-tab']">
-      <ion-icon name="chatbubbles"></ion-icon>
-      <ion-label>Chat</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+
+<!-- ion-tabs debe estar fuera de ion-content para que se mantenga fijo en la parte inferior -->
+
