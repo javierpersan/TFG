@@ -5,7 +5,6 @@
 </ion-header>
 
 <ion-content >
- 
     <!-- Avatar y correo del usuario -->
     <div style="text-align: center; padding-top: 20px;">
       <ion-avatar style="width: 100px; height: 100px; margin: 0 auto;">
@@ -70,24 +69,24 @@
     </div>
 
   
-
-  
+    
+    <ion-tabs style="position:sticky">
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button [routerLink]="['/user-tab']">
+          <ion-icon name="person"></ion-icon>
+          <ion-label>User</ion-label>
+        </ion-tab-button>
+        <ion-tab-button [routerLink]="['/pet-tab']">
+          <ion-icon name="paw"></ion-icon>
+          <ion-label>Pet</ion-label>
+        </ion-tab-button>
+        <ion-tab-button [routerLink]="['/chat-tab']">
+          <ion-icon name="chatbubbles"></ion-icon>
+          <ion-label>Chat</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
   
   
 </ion-content>
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button [routerLink]="['/user-tab']">
-      <ion-icon name="person"></ion-icon>
-      <ion-label>User</ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/pet-tab']">
-      <ion-icon name="paw"></ion-icon>
-      <ion-label>Pet</ion-label>
-    </ion-tab-button>
-    <ion-tab-button [routerLink]="['/chat-tab']">
-      <ion-icon name="chatbubbles"></ion-icon>
-      <ion-label>Chat</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+
