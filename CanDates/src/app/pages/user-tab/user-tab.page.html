@@ -43,12 +43,13 @@
       </ion-avatar>
     </div>
     
-    <label class="custom-upload-button" for="fileInput">
-      <ion-icon name="camera" class="upload-icon"></ion-icon>
-      Añade tus fotos
-    </label>
-    <input id="fileInput" type="file" accept="image/*" (change)="addUserPhoto($event)" style="display: none;">
-    
+    <!-- Botón para fotos de usuario -->
+  <label class="custom-upload-button" for="userFileInput">
+   <ion-icon name="camera" class="upload-icon"></ion-icon>
+   Añade tus fotos
+  </label>
+  <input id="userFileInput" type="file" accept="image/*" (change)="addUserPhoto($event)" style="display: none;">
+
     
     
   </div>
@@ -62,12 +63,13 @@
         <ion-icon name="close-circle" (click)="deletePhoto(i, 'petPhotos')"></ion-icon>
       </ion-avatar>
     </div>
-    <label class="custom-upload-button" for="fileInput">
-      <ion-icon name="camera" class="upload-icon"></ion-icon>
-      Añade Foto de tu Mascota
-    </label>
-    <input id="petFileInput" type="file" accept="image/*" (change)="addPetPhoto($event)" style="display: none;">
-    
+    <!-- Botón para fotos de mascota -->
+  <label class="custom-upload-button" for="petFileInput">
+    <ion-icon name="camera" class="upload-icon"></ion-icon>
+    Añade Foto de tu Mascota
+  </label>
+  <input id="petFileInput" type="file" accept="image/*" (change)="addPetPhoto($event)" style="display: none;">
+
   </div>
   <!-- Botón para actualizar el perfil -->
   <ion-button expand="block" (click)="updateProfile()">Actualizar Perfil</ion-button>
