@@ -1,85 +1,14 @@
-.page-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Asegúrate de que tome toda la altura de la pantalla */
-  }
-  
-  ion-content {
-    flex: 1; /* Esto hará que ion-content ocupe todo el espacio excepto el de ion-tab-bar */
-    overflow-y: auto; /* Habilita el desplazamiento solo dentro de ion-content */
-  }
-  
-  .tab-bar-wrapper {
-    position: fixed;
-    width: 100%; /* Asegúrate de que el tab bar ocupe todo el ancho */
-    bottom: 0; /* Posiciónalo en la parte inferior */
-    z-index: 9999; /* Asegúrate de que esté por encima de otros elementos */
-  }
-  
-  
-.user-info {
-    text-align: center;
-    padding-top: 20px;
-  
-    .user-avatar {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto;
-    }
-  
-    .user-email {
-      color: gray;
-      margin-top: 10px;
-    }
-  }
-  
-  .user-form {
-    padding: 20px;
-  
-    ion-item {
-      --padding-start: 0;
-      --padding-end: 0;
-      --inner-padding-end: 20px;
-      --inner-padding-start: 20px;
-    }
-  }
-  
-  .user-photos {
-    padding: 20px;
-  
-    ion-card-header {
-      padding-bottom: 0;
-    }
-  
-    .photo-gallery {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 10px;
-  
-      ion-img {
-        width: 30%;
-        height: 100px;
-        object-fit: cover;
-        background-color: #e0e0e0; // Placeholder color
-      }
-    }
-  
-    ion-button {
-      margin-top: 10px;
-    }
-  
-    .mt-20 {
-      margin-top: 20px;
-    }
-  }
-  
-  ion-tabs {
-    ion-tab-bar {
-      ion-tab-button {
-        --color-selected: var(--ion-color-primary); // Use your primary color here
-      }
-    }
-    
-      
-  }
-  
+.custom-upload-button {
+  display: inline-block;
+  background-color: #3498db; /* Cambia el color de fondo según tu preferencia */
+  color: #fff; /* Cambia el color del texto según tu preferencia */
+  padding: 10px 15px; /* Ajusta el espaciado interno según sea necesario */
+  border-radius: 5px; /* Añade bordes redondeados si lo deseas */
+  cursor: pointer; /* Cambia el cursor al pasar sobre él */
+}
+
+.upload-icon {
+  font-size: 24px; /* Ajusta el tamaño del icono según tu preferencia */
+  vertical-align: middle; /* Alinea el icono verticalmente con el texto */
+  margin-right: 10px; /* Ajusta el margen entre el icono y el texto según sea necesario */
+}

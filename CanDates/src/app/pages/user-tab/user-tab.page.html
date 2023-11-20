@@ -1,92 +1,75 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-    <!-- Avatar y correo del usuario -->
-    <div style="text-align: center; padding-top: 20px;">
-      <ion-avatar style="width: 100px; height: 100px; margin: 0 auto;">
-        <img src="../../../assets/perro.png">
-      </ion-avatar>
-      <p style="color: gray; margin-top: 10px;">correo@ejemplo.com</p>
-    </div>
-  
-    <!-- Caja de texto para modificar apodo -->
-    <div style="padding: 20px;">
-      <ion-item>
-        <ion-label position="floating">Modificar Apodo</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-    </div>
-  
-    <!-- Descripción -->
-    <div style="padding: 20px;">
-      <ion-item>
-        <ion-label position="floating">Descripción</ion-label>
-        <ion-textarea rows="4"></ion-textarea>
-      </ion-item>
-    </div>
-  
-    <!-- Fotos -->
-    <div style="padding: 20px;">
-      <ion-label>Fotos</ion-label>
-  
-      <!-- Fotos de la persona -->
-      <ion-label style="font-weight: bold;">Persona</ion-label>
-      <div style="display: flex; justify-content: space-between;">
-        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
-          <ion-img src="../../../assets/perro.png" style="width: 100%; height: 100%;"></ion-img>
-        </div>
-        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
-          <ion-img src="../../../assets/perro.png" style="width: 100%; height: 100%;"></ion-img>
-        </div>
-        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
-          <ion-img src="../../../assets/perro.png" style="width: 100%; height: 100%;"></ion-img>
-        </div>
-      </div>
-  
-      <!-- Botón para añadir más fotos de la persona -->
-      <ion-button expand="block" fill="outline" style="margin-top: 10px;">Añadir más</ion-button>
-  
-      <!-- Fotos de la mascota -->
-      <ion-label style="font-weight: bold; margin-top: 20px;">Mascota</ion-label>
-      <div style="display: flex; justify-content: space-between;">
-        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
-          <ion-img src="../../../assets/perro.png" style="width: 100%; height: 100%;"></ion-img>
-        </div>
-        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
-          <ion-img src="../../../assets/perro.png" style="width: 100%; height: 100%;"></ion-img>
-        </div>
-        <div style="width: 30%; height: 100px; background-color: #e0e0e0;">
-          <ion-img src="../../../assets/perro.png" style="width: 100%; height: 100%;"></ion-img>
-        </div>
-      </div>
-  
-      <!-- Botón para añadir más fotos de la mascota -->
-      <ion-button expand="block" fill="outline" style="margin-top: 10px;">Añadir más</ion-button>
-    </div>
 
+<ion-content>
+  <!-- Avatar y correo del usuario -->
+  <div style="text-align: center; padding-top: 20px;">
+    <ion-avatar style="width: 100px; height: 100px; margin: 0 auto;">
+      <img src="../../../assets/perro.png">
+    </ion-avatar>
+    <p style="color: gray; margin-top: 10px;">{{ userEmail }}</p>
+  </div>
   
+  <!-- Caja de texto para modificar apodo -->
+  <div style="padding: 20px;">
+    <ion-item>
+      <ion-label position="floating">Modificar Apodo</ion-label>
+      <ion-input type="text" [(ngModel)]="userNickname"></ion-input>
+    </ion-item>
+  </div>
+  
+  <!-- Descripción -->
+  <div style="padding: 20px;">
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea rows="4" [(ngModel)]="userDescription"></ion-textarea>
+    </ion-item>
+  </div>
+  
+  <!-- Fotos de la persona -->
+  <div style="padding: 20px;">
+    <ion-label style="font-weight: bold;">Fotos de Usuario</ion-label>
+    <div style="display: flex; justify-content: space-between; padding-bottom: 15px;">
+      <ion-avatar *ngFor="let userPhoto of userPhotos; let i = index" style="width: 30%; height: 100px;">
+        <img [src]="userPhoto || '../../../assets/perro.png'" style="width: 100px; height: 100px">
+        <ion-icon name="close-circle" (click)="deletePhoto(i, 'userPhotos')"></ion-icon>
+      </ion-avatar>
+    </div>
     
-    <ion-tabs style="position:sticky">
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button [routerLink]="['/user-tab']">
-          <ion-icon name="person"></ion-icon>
-          <ion-label>User</ion-label>
-        </ion-tab-button>
-        <ion-tab-button [routerLink]="['/pet-tab']">
-          <ion-icon name="paw"></ion-icon>
-          <ion-label>Pet</ion-label>
-        </ion-tab-button>
-        <ion-tab-button [routerLink]="['/chat-tab']">
-          <ion-icon name="chatbubbles"></ion-icon>
-          <ion-label>Chat</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
+    <label class="custom-upload-button" for="fileInput">
+      <ion-icon name="camera" class="upload-icon"></ion-icon>
+      Añade tus fotos
+    </label>
+    <input id="fileInput" type="file" accept="image/*" (change)="addUserPhoto($event)" style="display: none;">
+    
+    
+    
+  </div>
   
-  
+  <!-- Fotos de la mascota -->
+  <div style="padding: 20px;">
+    <ion-label style="font-weight: bold;">Fotos de Mascota</ion-label>
+    <div style="display: flex; justify-content: space-between; padding-bottom: 15px;">
+      <ion-avatar *ngFor="let petPhoto of petPhotos; let i = index" style="width: 30%; height: 100px;">
+        <img [src]="petPhoto" style="width: 100px; height: 100px">
+        <ion-icon name="close-circle" (click)="deletePhoto(i, 'petPhotos')"></ion-icon>
+      </ion-avatar>
+    </div>
+    <label class="custom-upload-button" for="fileInput">
+      <ion-icon name="camera" class="upload-icon"></ion-icon>
+      Añade Foto de tu Mascota
+    </label>
+    <input id="fileInput" type="file" accept="image/*" (change)="addPetPhoto($event)" style="display: none;">
+    
+  </div>
+  <!-- Botón para actualizar el perfil -->
+  <ion-button expand="block" (click)="updateProfile()">Actualizar Perfil</ion-button>
 </ion-content>
 

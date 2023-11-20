@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { gsap } from 'gsap';
-import { AuthServiceService } from '../services/auth-service.service'; // Asegúrate de que la ruta es correcta
+import { AuthService } from '../services/auth-service.service'; // Asegúrate de que la ruta es correcta
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class RegisterPage implements OnInit, AfterViewInit {
   successMessage: string = '';
 
 
-  constructor(private authService: AuthServiceService, private router: Router,    private afAuth: AngularFireAuth,) {}
+  constructor(private authService: AuthService, private router: Router,    private afAuth: AngularFireAuth,) {}
 
   ngOnInit() {}
 

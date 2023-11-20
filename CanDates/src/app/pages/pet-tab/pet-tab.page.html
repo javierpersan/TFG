@@ -1,34 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>PetMatch</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-card *ngFor="let pet of pets" (click)="flipCard(pet)">
-    <ion-card-header>
-      <ion-card-title>{{ pet.name }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <div [class.card-front]="!pet.flipped">
-        <img [src]="pet.photos" />
-        <p>{{ pet.description }}</p>
-      </div>
-      <div [class.card-back]="pet.flipped">
-        <!-- Contenido del reverso de la tarjeta -->
-      </div>
-    </ion-card-content>
-  </ion-card>
-  
-  <!-- Botones de acción fuera del ion-card para evitar el evento click del card -->
-  <div class="action-buttons">
-    <ion-button color="danger" (click)="dislike(pet)">
-      <ion-icon name="close"></ion-icon>
-    </ion-button>
-    <ion-button color="secondary" (click)="dislike(pet)">
-      <ion-icon name="heart"></ion-icon>
-    </ion-button>
-  </div>
+<ion-content>
   <ion-tabs style="position:fixed">
     <ion-tab-bar slot="bottom">
       <ion-tab-button [routerLink]="['/user-tab']">

@@ -2,8 +2,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import lottie from 'lottie-web';
 import { gsap } from 'gsap';
-import { AuthServiceService } from '../services/auth-service.service';
-
+import { UserService } from '../services/user.service';
+import {AuthService} from '../services/auth-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -14,7 +14,7 @@ export class LoginPage implements OnInit, AfterViewInit {
   password: string;
   emailValidationColor: string = 'primary';
 
-  constructor(private router: Router, private authService: AuthServiceService) {
+  constructor(private userService: UserService, private router: Router, private authService: AuthService) {
     this.email = '';
     this.password = '';
   }
@@ -97,8 +97,25 @@ export class LoginPage implements OnInit, AfterViewInit {
   
   login() {
     console.log("Iniciar sesión");
-    // Implementar lógica de inicio de sesión
+  
+    if (this.email && this.password) {
+      // Llama al servicio AuthService para realizar el inicio de sesión con correo electrónico
+      this.authService.loginWithEmail(this.email, this.password)
+        .then(() => {
+          // El inicio de sesión fue exitoso, puedes redirigir a la página principal u otra página
+          this.router.navigate(['/home']);
+        })
+        .catch((error) => {
+          console.error('Error al iniciar sesión:', error);
+          // Puedes mostrar un mensaje de error al usuario aquí
+        });
+    } else {
+      // Maneja el caso en el que los campos de correo electrónico y contraseña estén vacíos
+      console.error('Por favor, ingresa tu correo electrónico y contraseña.');
+      // Puedes mostrar un mensaje de error al usuario aquí
+    }
   }
+  
 
   async loginWithGoogle() {
     try {

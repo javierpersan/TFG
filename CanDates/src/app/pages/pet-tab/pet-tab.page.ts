@@ -16,7 +16,7 @@ interface Pet {
   styleUrls: ['./pet-tab.page.scss'],
 })
 export class PetTabPage implements OnInit {
-  pets: Pet[] = [
+  pet: Pet[] = [
     {
       id: 1,
     name: 'Fido',
