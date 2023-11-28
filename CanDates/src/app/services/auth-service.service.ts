@@ -49,15 +49,16 @@ export class AuthService {
     }
 }
 
-  async loginWithEmail(email: string, password: string): Promise<void> {
-    try {
-      await signInWithEmailAndPassword(this.auth, email, password);
-      this.userService.setUserEmail(email);
-      console.log('User logged in successfully!');
-    } catch (error) {
-      console.error('Error logging in:', error);
-    }
+async loginWithEmail(email: string, password: string): Promise<void> {
+  try {
+    await signInWithEmailAndPassword(this.auth, email, password);
+    this.userService.setUserEmail(email); // Establece el correo electrónico en el servicio
+    console.log('User logged in successfully!');
+    this.router.navigate(['home']);
+  } catch (error) {
+    console.error('Error logging in:', error);
   }
+}
   setUserEmail(email: string | null): void {
     this.userEmail = email;
   }

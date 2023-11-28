@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { gsap } from 'gsap';
+import { UserService } from '../../services/user.service'; // Asegúrate de importar tu servicio UserService
 
 @Component({
   selector: 'app-chat-tab',
@@ -7,24 +7,18 @@ import { gsap } from 'gsap';
   styleUrls: ['./chat-tab.page.scss'],
 })
 export class ChatTabPage implements OnInit {
-  ionViewWillEnter() {
-    this.animateTab();
-  }
-  
-  constructor() { }
+  matchedUsers: any[] = []; // Asegúrate de utilizar el tipo de datos correcto para tus usuarios coincidentes
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.animateTab();
-  }
-  animateTab() {
-    const tabContent = document.querySelector('.content-class'); // Asegúrate de seleccionar el elemento correcto.
-    gsap.from(tabContent, {
-      x: '-100%',
-      duration: 1,
-      ease: 'power3.out',
-      stagger: {
-        amount: 0.3
-      }
+    // Cargar la lista de usuarios coincidentes desde Firebase o tu fuente de datos
+    this.userService.getMatchedUsers().subscribe((users: any[]) => {
+      this.matchedUsers = users;
     });
+  }
+
+  openChat(email: string) {
+    // Lógica para abrir el chat con el usuario seleccionado
   }
 }

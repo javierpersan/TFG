@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { User } from './user.interface';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,10 +34,12 @@ export class UserService {
     if (!userDoc.exists) {
       // El documento no existe, crea un perfil inicial
       const initialUserProfile: User = {
+        email:userEmail,
         apodo: '',
         desc: '',
         userPhotos: [],
-        petPhotos: []
+        petPhotos: [],
+        likes:[]
       };
 
       try {
@@ -48,7 +51,9 @@ export class UserService {
   }
 
   getUserProfile(): Observable<User | undefined> {
+    
     return this.firestore.doc<User>(`users/${this.userEmail}`).valueChanges();
+    
   }
 
   updateUserProfile(nickname: string, description: string): Promise<void> {
@@ -99,4 +104,43 @@ export class UserService {
     
     return userRef.update(updateObj);
   }
+  getUsersForMatching(): Observable<User[]> {
+    return this.firestore.collection<User>('users').valueChanges({ idField: 'id' });
+  }
+  
+
+  // Método para registrar un "like"
+  async likeUser(userId: string, likedUserId: string): Promise<void> {
+    const userRef = this.firestore.doc(`users/${userId}`);
+    try {
+      await userRef.update({
+        likes: firebase.firestore.FieldValue.arrayUnion(likedUserId)
+      });
+    } catch (error) {
+      console.error('Error al agregar like:', error);
+    }
+  }
+
+  // Método para registrar un "dislike" (si es necesario)
+  async dislikeUser(userId: string, dislikedUserId: string): Promise<void> {
+    // Lógica para manejar "dislike"
+  }
+  addToLikedUsers(currentUserEmail: string, likedUserEmail: string): Promise<void> {
+    const userRef = this.firestore.doc(`users/${currentUserEmail}`);
+    const updateObj: { [key: string]: any } = {};
+  
+    // Agregar el correo del usuario al que le diste like a tu lista de likedUsers
+    updateObj['likedUsers'] = firebase.firestore.FieldValue.arrayUnion(likedUserEmail);
+  
+    return userRef.update(updateObj);
+  }
+  
+  getMatchedUsers(): Observable<any[]> {
+    // Realiza la consulta a la colección de usuarios o la ruta correcta en tu base de datos Firebase
+    return this.firestore.collection<any>('users', ref =>
+      ref.where('likes', 'array-contains', this.userEmail) 
+    ).valueChanges();
+  }
+  
+
 }  

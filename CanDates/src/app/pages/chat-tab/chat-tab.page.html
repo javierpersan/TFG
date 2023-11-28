@@ -8,10 +8,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">chatTab</ion-title>
-    </ion-toolbar>
-  </ion-header>
- 
+  <ion-list>
+    <!-- Utiliza *ngFor para iterar sobre la lista de coincidencias -->
+    <ion-item *ngFor="let match of matchedUsers" (click)="openChat(match.email)">
+      <!-- Muestra el apodo y otras informaciones de la coincidencia -->
+      <ion-avatar slot="start">
+        <img [src]="match.userPhotos[0] || 'assets/default-avatar.png'">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ match.apodo }}</h2>
+        <p>{{ match.desc }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
