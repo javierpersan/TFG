@@ -1,0 +1,49 @@
+.chat-container {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.chat-bubble {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 20px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.chat-bubble.right {
+  background-color: #0b93f6;
+}
+
+.chat-bubble ion-card-title {
+  color: black;
+}
+
+.chat-bubble.right ion-card-title {
+  color: white;
+}
+
+.chat-input {
+  background-color: #ffffff;
+  border-top: 1px solid #dddddd;
+  padding: 10px;
+}
+
+.chat-input ion-input {
+  border: 1px solid #dddddd;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.chat-input ion-button {
+  border-radius: 15px;
+  font-size: 16px;
+}
+.chat-bubble ion-card-title {
+  color: black;
+}

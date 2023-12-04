@@ -6,7 +6,9 @@ import { switchMap } from 'rxjs/operators';
 import { User } from './user.interface';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -135,12 +137,28 @@ export class UserService {
     return userRef.update(updateObj);
   }
   
-  getMatchedUsers(): Observable<any[]> {
-    // Realiza la consulta a la colección de usuarios o la ruta correcta en tu base de datos Firebase
-    return this.firestore.collection<any>('users', ref =>
-      ref.where('likes', 'array-contains', this.userEmail) 
+ 
+
+  getMatchedUsers(): Observable<User[]> {
+    const likes$ = this.firestore.collection<User>('users', ref =>
+      ref.where('likes', 'array-contains', this.userEmail)
     ).valueChanges();
+
+    const likedUsers$ = this.firestore.collection<User>('users', ref =>
+      ref.where('likes', 'array-contains', this.userEmail) // Aquí asumimos que también guardas los usuarios que han dado "like" al usuario actual en el array 'likes'
+    ).valueChanges();
+
+    return combineLatest([likes$, likedUsers$]).pipe(
+      map(([likes, likedUsers]) => likes.filter(like => likedUsers.some(likedUser => likedUser.email === like.email)))
+    );
   }
-  
+  //metodo para obtener nombre de usuario 
+  // En user.service.ts
+  getUserName(): Observable<string> {
+    return this.getUserProfile().pipe(
+      map(currentUserProfile => currentUserProfile?.apodo || '')
+    );
+  }
+
 
 }  

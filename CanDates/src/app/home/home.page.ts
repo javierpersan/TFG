@@ -3,17 +3,25 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/services/user.interface';
 import { Router } from '@angular/router';
 import { gsap } from 'gsap';
-
+import { trigger, state, style, animate, transition } from '@angular/animations';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  animations: [
+    trigger('grow', [
+      state('small', style({ transform: 'scale(1)' })),
+      state('large', style({ transform: 'scale(1.2)' })),
+      transition('small <=> large', animate('300ms ease-in'))
+    ])
+  ]
 })
 export class HomePage implements OnInit {
   users: User[] = [];
   loading: boolean = false;
   userEmail: string = '';
   currentIndex: number = 0; // Índice de la tarjeta actual
+  buttonState = 'small';
 
   constructor(private userService: UserService, private router: Router) {}
 
@@ -73,7 +81,8 @@ export class HomePage implements OnInit {
 
   likeUser(likedUserEmail: string) {
     const currentUserEmail = this.userService.getUserEmail();
-
+    this.buttonState = 'large';
+    setTimeout(() => this.buttonState = 'small', 300);
     if (currentUserEmail) {
       // Verificar si el usuario está autenticado antes de dar like
       this.userService.likeUser(likedUserEmail, currentUserEmail).then(() => {
@@ -98,6 +107,8 @@ export class HomePage implements OnInit {
 
   dislikeUser(dislikedUser: User) {
     console.log('Usuario no likeado:', dislikedUser.apodo);
+    this.buttonState = 'large';
+    setTimeout(() => this.buttonState = 'small', 300);
     // Implementa la lógica para el "dislike" aquí
     // Cambia a la siguiente tarjeta
     this.dislikeUserAnimation();

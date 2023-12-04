@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 
@@ -20,7 +20,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [MatButtonModule,MatCardModule,BrowserModule,AngularFireModule.initializeApp(firebaseConfig), IonicModule.forRoot(),provideAuth(() => getAuth()), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())],
+  imports: [BrowserAnimationsModule,MatButtonModule,MatCardModule,BrowserModule,AngularFireModule.initializeApp(firebaseConfig), IonicModule.forRoot(),provideAuth(() => getAuth()), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   exports: [MatButtonModule,MatCardModule]

@@ -33,7 +33,15 @@ const routes: Routes = [
     path: 'chat-tab',
     loadChildren: () => import('./pages/chat-tab/chat-tab.module').then( m => m.ChatTabPageModule)
   },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
 
+{
+  path: 'chat/:email',
+  loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+},
   
 
 ];

@@ -1,6 +1,5 @@
 #container {
   text-align: center;
-
   position: absolute;
   left: 0;
   right: 0;
@@ -8,12 +7,96 @@
   transform: translateY(-50%);
 }
 
+
+/* botones redondos */
+.round-button {
+  --border-radius: 50%; /* Hace que los botones sean completamente redondos */
+  --background: #ffffff; /* fondo blanco */
+  --padding-start: 0;
+  --padding-end: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Espacio entre los botones */
+}
+
+.round-button ion-icon {
+  font-size: 24px;
+}
+
+.round-button:hover {
+  --background: #8b8b8b; /* fondo gris */
+  transform: scale(1.1); /* hace que el botón se agrande un poco */
+  transition: transform 0.3s ease; /* anima el cambio de tamaño */
+}
+
+
+.my-background {
+  --background: repeating-linear-gradient(
+    45deg,
+    #0d0d0d,
+    #0d0d0d 10px,
+    #1b1b1b 10px,
+    #1b1b1b 20px
+  );
+}
+
 #container strong {
   font-size: 20px;
   line-height: 26px;
 }
-/* En tu archivo de estilos CSS */
 
+.user-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.user-card {
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: box-shadow 0.3s ease;
+  padding: 20px;
+  display: flex; /* Añade esta línea */
+  flex-direction: column; /* Añade esta línea */
+  justify-content: center; /* Añade esta línea */
+  align-items: center; /* Añade esta línea */
+}
+
+.user-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+.user-card ion-img {
+  height: 200px;
+  object-fit: contain;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Espacio entre los botones */
+}
+.user-card ion-card-header,
+.user-card ion-card-content {
+  padding: 20px; /* Reduce el padding en el encabezado y contenido de la tarjeta */
+  color: #fff;
+  text-align: center; /* Añade esta línea */
+}
 /* En tu archivo de estilos CSS */
 .centered-title {
   text-align: center;
@@ -39,29 +122,29 @@
   background-size: cover;
 }
 
-
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
 }
-.user-card {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
 
 .my-custom-icon.large-icon {
   font-size: 2.5em;
   color: #406eec;
+}
+
+.custom-ion-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ion-img {
+  width: 100%;
 }
 
 .centered-title {
@@ -70,33 +153,11 @@
   font-weight: bold;
   font-size: 1.2em;
 }
+
 .custom-ion-card {
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.user-card {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-/* En tu archivo de estilos CSS o en el archivo de estilos de componentes */
-.user-card-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%; /* Ocupa toda la altura disponible */
-}
-
-.user-card {
-  width: 100%;
-  max-width: 400px; /* Ancho máximo deseado para la tarjeta */
-  box-sizing: border-box;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: center; /* Añade esta línea */
 }
 
 ion-img {
@@ -106,8 +167,10 @@ ion-img {
 
 ion-card-content {
   flex-grow: 1; /* Hace que el contenido ocupe el espacio restante */
+  align-items: center; /* Añade esta línea */
 }
 
 ion-row {
   width: 100%;
+  justify-content: center; /* Añade esta línea */
 }
