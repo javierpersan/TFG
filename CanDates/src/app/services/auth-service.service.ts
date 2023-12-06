@@ -14,10 +14,16 @@ export class AuthService {
 
   async registerWithEmail(email: string, password: string): Promise<void> {
     try {
-        await createUserWithEmailAndPassword(this.auth, email, password);
-      console.log('User registered successfully!');
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      const userEmail = userCredential.user?.email;
+
+      if (userEmail) {
+        this.userService.setUserEmail(userEmail);
+        this.router.navigate(['home']);
+        console.log('User registered with email!');
+      }
     } catch (error) {
-      console.error('Error registering user:', error);
+      console.error('Error registering with email:', error);
     }
   }
 
@@ -51,12 +57,16 @@ export class AuthService {
 
 async loginWithEmail(email: string, password: string): Promise<void> {
   try {
-    await signInWithEmailAndPassword(this.auth, email, password);
-    this.userService.setUserEmail(email); // Establece el correo electrónico en el servicio
-    console.log('User logged in successfully!');
-    this.router.navigate(['home']);
+    const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+    const userEmail = userCredential.user?.email;
+
+    if (userEmail) {
+      this.userService.setUserEmail(userEmail);
+      this.router.navigate(['home']);
+      console.log('User logged in with email!');
+    }
   } catch (error) {
-    console.error('Error logging in:', error);
+    console.error('Error logging in with email:', error);
   }
 }
   setUserEmail(email: string | null): void {

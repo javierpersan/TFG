@@ -1,11 +1,15 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Chat</ion-title>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/chat-tab"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ user?.apodo }}</ion-title>
+    <ion-avatar slot="end">
+      <img [src]="user?.userPhotos[0]">
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true" class="chat-container">
-  <!-- Lista de mensajes -->
+<ion-content [fullscreen]="true" class="chat-container" style="margin-bottom: 50px;">
   <ion-list>
     <ion-card *ngFor="let message of messages" class="chat-bubble" [class.right]="message.sender === 'Yo'">
       <ion-card-header>
@@ -18,17 +22,17 @@
   </ion-list>
 </ion-content>
 
-  <ion-footer class="dark-theme sticky-footer">
-    <ion-toolbar>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="10" size-sm="8" offset-sm="2">
-            <ion-input [(ngModel)]="newMessage" placeholder="Escribe un mensaje"></ion-input>
-          </ion-col>
-          <ion-col size="2">
-            <ion-button expand="full" (click)="sendMessage()">Enviar</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-toolbar>
-  </ion-footer>
+<ion-footer class="dark-theme sticky-footer" style="position: fixed; width: 100%; bottom: 0;">
+  <ion-toolbar color="dark">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10">
+          <ion-input [(ngModel)]="newMessage" placeholder="Escribe un mensaje" class="message-input"></ion-input>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button expand="full" color="primary" (click)="sendMessage()">Enviar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

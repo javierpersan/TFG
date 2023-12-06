@@ -8,6 +8,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 @Injectable({
@@ -18,12 +19,14 @@ export class UserService {
 
   constructor(
     private firestore: AngularFirestore,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private afAuth: AngularFireAuth
   ) {}
 
   setUserEmail(email: string) {
     this.userEmail = email;
   }
+ 
 
   getUserEmail(): string {
     return this.userEmail;
@@ -57,7 +60,7 @@ export class UserService {
     return this.firestore.doc<User>(`users/${this.userEmail}`).valueChanges();
     
   }
-
+  
   updateUserProfile(nickname: string, description: string): Promise<void> {
     return this.firestore.doc(`users/${this.userEmail}`).update({
       apodo: nickname,
@@ -160,5 +163,9 @@ export class UserService {
     );
   }
 
-
+  getUser(email: string): Observable<User> {
+    return this.firestore.collection<User>('users', ref => ref.where('email', '==', email)).valueChanges().pipe(
+      map(users => users[0])
+    );
+  }
 }  

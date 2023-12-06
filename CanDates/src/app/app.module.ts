@@ -4,8 +4,8 @@ import { RouteReuseStrategy } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
-
-
+import { NbChatModule } from '@nebular/theme';
+import { NbThemeModule } from '@nebular/theme';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -20,7 +20,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserAnimationsModule,MatButtonModule,MatCardModule,BrowserModule,AngularFireModule.initializeApp(firebaseConfig), IonicModule.forRoot(),provideAuth(() => getAuth()), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())],
+  imports: [NbThemeModule.forRoot(),NbChatModule,BrowserAnimationsModule,MatButtonModule,MatCardModule,BrowserModule,AngularFireModule.initializeApp(firebaseConfig), IonicModule.forRoot(),provideAuth(() => getAuth()), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth())],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   exports: [MatButtonModule,MatCardModule]
