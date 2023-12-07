@@ -12,12 +12,10 @@
 
 .button-container {
   display: flex;
-  flex-direction: row; /* Hace que los botones se coloquen uno al lado del otro */
   justify-content: center;
   align-items: center;
-  gap: 5%; /* Espacio entre los botones */
-  width: 100%; /* Asegura que el contenedor ocupa todo el ancho disponible */
-  height: 100%; /* Asegura que el contenedor ocupa todo el alto disponible */
+  height: 100%;
+  width: 100%;
 }
 
 .round-button {
@@ -25,7 +23,7 @@
   --border-color: transparent; 
   --box-shadow: none; /* Elimina la sombra del botón */
   font-size: 100px; /* Ajusta el tamaño del texto/icono dentro del botón */
-  width: 40%; 
+  width: 30%; /* Reduce el ancho del botón */
   height: auto; /* Ajusta la altura del botón al 100% del contenedor */
 }
 
@@ -36,13 +34,7 @@
 
 
 .my-background {
-  --background: repeating-linear-gradient(
-    45deg,
-    #0d0d0d,
-    #0d0d0d 10px,
-    #1b1b1b 10px,
-    #1b1b1b 20px
-  );
+  --background: url('../../assets/fondologin.png') no-repeat center center / cover;
 }
 
 #container strong {
@@ -63,7 +55,7 @@
   max-width: 400px;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2);
   border-radius: 15px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(12, 12, 12, 0.493);
   backdrop-filter: blur(5px);
   border: 2px solid rgba(255, 255, 255, 0.2);
   transition: box-shadow 0.3s ease;
@@ -73,11 +65,16 @@
   justify-content: center; /* Añade esta línea */
   align-items: center; /* Añade esta línea */
 }
-
+.ion-toolbar {
+  height:80px; /* Ajusta este valor según tus necesidades */
+}
 .user-card:hover {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
-
+.my-custom-icon {
+  font-size: 50px; /* Aumenta el tamaño del icono */
+  color: gray; /* Cambia el color del icono a gris */
+}
 .user-card ion-img {
   height: 200px;
   object-fit: contain;

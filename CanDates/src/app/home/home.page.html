@@ -1,11 +1,17 @@
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&display=swap" />
+</head>
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="ion-toolbar">
     <ion-buttons slot="start">
-      <ion-icon class="my-custom-icon large-icon" (click)="goToUserTab()" name="person-circle"></ion-icon>
+      <ion-icon class="my-custom-icon" (click)="goToUserTab()" name="person-circle"></ion-icon>
     </ion-buttons>
-    <ion-title class="centered-title">Discover</ion-title>
+    <ion-title class="centered-title">
+      <h3 style="font-size: 3em; line-height: 1.2; font-family: 'Lobster', cursive;">Canidates</h3>
+    </ion-title>
     <ion-buttons slot="end">
-      <ion-icon class="my-custom-icon large-icon" (click)="goToChatTab()" name="chatbubbles"></ion-icon>
+      <ion-icon class="my-custom-icon" (click)="goToChatTab()" name="chatbubbles"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
