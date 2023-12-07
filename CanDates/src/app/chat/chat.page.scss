@@ -1,6 +1,12 @@
-.chat-container {
-  background-color: #f0f0f0;
-  padding: 10px;
+body {
+  background-image: url('../../assets/fondochat.png');
+  background-size: 100% 100%;  // Ajusta la imagen al tamaño completo del contenedor
+  background-repeat: no-repeat;  // Evita que la imagen se repita
+  background-position: center;  // Centra la imagen en el contenedor
+}
+
+ion-header, ion-footer, ion-card {
+  z-index: 1;
 }
 
 .chat-bubble {
@@ -30,20 +36,4 @@
 .chat-input {
   background-color: #ffffff;
   border-top: 1px solid #dddddd;
-  padding: 10px;
-}
-
-.chat-input ion-input {
-  border: 1px solid #dddddd;
-  border-radius: 15px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.chat-input ion-button {
-  border-radius: 15px;
-  font-size: 16px;
-}
-.chat-bubble ion-card-title {
-  color: black;
 }

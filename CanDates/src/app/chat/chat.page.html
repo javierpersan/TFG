@@ -4,14 +4,11 @@
       <ion-back-button defaultHref="/chat-tab"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ user?.apodo }}</ion-title>
-    <ion-avatar slot="end">
-      <img [src]="user?.userPhotos[0]">
-    </ion-avatar>
   </ion-toolbar>
 </ion-header>
-<ion-content [fullscreen]="true" class="chat-container" style="margin-bottom: 50px;">
+<ion-content [fullscreen]="true"  style="margin-bottom: 50px;">
   <ion-list>
-    <ion-card *ngFor="let message of messages" class="chat-bubble" [class.right]="message.sender === 'Yo'">
+    <ion-card *ngFor="let message of messages" class="chat-bubble">
       <ion-card-header>
         <ion-card-title>{{message.sender}}</ion-card-title>
       </ion-card-header>

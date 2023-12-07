@@ -148,7 +148,7 @@ export class UserService {
     ).valueChanges();
 
     const likedUsers$ = this.firestore.collection<User>('users', ref =>
-      ref.where('likes', 'array-contains', this.userEmail) // Aquí asumimos que también guardas los usuarios que han dado "like" al usuario actual en el array 'likes'
+      ref.where('likedUsers', 'array-contains', this.userEmail)
     ).valueChanges();
 
     return combineLatest([likes$, likedUsers$]).pipe(
