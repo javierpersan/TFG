@@ -8,29 +8,28 @@
 }
 
 
-/* botones redondos */
-.round-button {
-  --border-radius: 50%; /* Hace que los botones sean completamente redondos */
-  --background: #ffffff; /* fondo blanco */
-  --padding-start: 0;
-  --padding-end: 0;
-  width: 50px;
-  height: 50px;
-}
+
 
 .button-container {
   display: flex;
+  flex-direction: row; /* Hace que los botones se coloquen uno al lado del otro */
   justify-content: center;
   align-items: center;
-  gap: 20px; /* Espacio entre los botones */
+  gap: 5%; /* Espacio entre los botones */
+  width: 100%; /* Asegura que el contenedor ocupa todo el ancho disponible */
+  height: 100%; /* Asegura que el contenedor ocupa todo el alto disponible */
 }
 
-.round-button ion-icon {
-  font-size: 24px;
+.round-button {
+  --background: transparent; 
+  --border-color: transparent; 
+  --box-shadow: none; /* Elimina la sombra del botón */
+  font-size: 100px; /* Ajusta el tamaño del texto/icono dentro del botón */
+  width: 40%; 
+  height: auto; /* Ajusta la altura del botón al 100% del contenedor */
 }
 
 .round-button:hover {
-  --background: #8b8b8b; /* fondo gris */
   transform: scale(1.1); /* hace que el botón se agrande un poco */
   transition: transform 0.3s ease; /* anima el cambio de tamaño */
 }
